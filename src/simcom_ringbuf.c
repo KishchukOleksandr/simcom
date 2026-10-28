@@ -38,28 +38,25 @@ simcom_status_t simcom_ringbuf_push(
         return SIMCOM_STATUS_INVALID_ARG;
     }
 
-    size_t head = me->rx_head;
-    const size_t tail = me->rx_tail;
-    size_t written = 0U;
-    simcom_status_t status = SIMCOM_STATUS_OK;
-
-    while (written < len) {
-        const size_t next_head = (head + 1U) % SIMCOM_CFG_RX_BUF_SIZE;
-        if (next_head == tail) {
+    size_t i = 0U;
+    while (i < len) {
+        const size_t next = (me->rx_head + 1U) % SIMCOM_CFG_RX_BUF_SIZE;
+        if (next == me->rx_tail) {
             me->rx_overflow = true;
-            status = SIMCOM_STATUS_BUFFER_FULL;
-            break;
+            if (out_fed != NULL) {
+                *out_fed = i;
+            }
+            return SIMCOM_STATUS_BUFFER_FULL;
         }
-        me->rx_buf[head] = data[written];
-        head = next_head;
-        written++;
+        me->rx_buf[me->rx_head] = data[i];
+        me->rx_head = next;
+        i++;
     }
 
-    me->rx_head = head;
     if (out_fed != NULL) {
-        *out_fed = written;
+        *out_fed = i;
     }
-    return status;
+    return SIMCOM_STATUS_OK;
 }
 
 bool simcom_ringbuf_pop(simcom_handle_t * const me, uint8_t * const out_byte)

@@ -121,32 +121,7 @@ simcom_status_t Simcom_FeedBytes(
     size_t len,
     size_t * const out_fed)
 {
-    if ((me == NULL) || ((len > 0U) && (data == NULL))) {
-        if (out_fed != NULL) {
-            *out_fed = 0U;
-        }
-        return SIMCOM_STATUS_INVALID_ARG;
-    }
-
-    size_t i = 0U;
-    while (i < len) {
-        const size_t next = (me->rx_head + 1U) % SIMCOM_CFG_RX_BUF_SIZE;
-        if (next == me->rx_tail) {
-            me->rx_overflow = true;
-            if (out_fed != NULL) {
-                *out_fed = i;
-            }
-            return SIMCOM_STATUS_BUFFER_FULL;
-        }
-        me->rx_buf[me->rx_head] = data[i];
-        me->rx_head = next;
-        i++;
-    }
-
-    if (out_fed != NULL) {
-        *out_fed = i;
-    }
-    return SIMCOM_STATUS_OK;
+    return simcom_ringbuf_push(me, data, len, out_fed);
 }
 
 simcom_lifecycle_state_t Simcom_GetState(const simcom_handle_t * const me)
