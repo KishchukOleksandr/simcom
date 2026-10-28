@@ -1,0 +1,48 @@
+# Build directories
+build/
+build*/
+bin/
+obj/
+out/
+
+# C/C++ compiled objects and libraries
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+*.su
+
+# CMake & tooling
+CMakeUserPresets.json
+compile_commands.json
+.cache/
+.clangd/
+
+# Autotools & configuration
+autom4te.cache/
+config.status
+config.log
+
+# IDE & editors
+.idea/
+.vscode/
+.vs/
+*.swp
+*~
+
+# Logs and runtime files
+*.log
+*.tmp
+
+# Secrets & environment
+.env
+.env.*
+!.env.example
+
+# OS generated files
+.DS_Store
+Thumbs.db
