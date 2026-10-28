@@ -46,3 +46,6 @@ config.log
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Graphify output
+graphify-out/
