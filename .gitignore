@@ -49,3 +49,7 @@ Thumbs.db
 
 # Graphify output
 graphify-out/
+
+# Documentation output
+docs/generated/
+

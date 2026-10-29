@@ -165,9 +165,9 @@ typedef struct {
     simcom_reg_state_t cs_reg;          /**< Circuit-switched (+CREG) state */
     simcom_reg_state_t ps_reg;          /**< Packet-switched (+CGREG) state */
     simcom_reg_state_t eps_reg;         /**< EPS/LTE (+CEREG) state */
-    uint8_t rssi_raw;                   /**< Raw +CSQ <rssi> (0..31, 99=unknown) */
+    uint8_t rssi_raw;                   /**< Raw +CSQ `<rssi>` (0..31, 99=unknown) */
     int16_t rssi_dbm;                   /**< Signal strength in dBm (-113..-51, 0=unknown) */
-    uint8_t ber_raw;                    /**< Raw +CSQ <ber> (0..7, 99=unknown) */
+    uint8_t ber_raw;                    /**< Raw +CSQ `<ber>` (0..7, 99=unknown) */
     simcom_act_t act;                   /**< Active Radio Access Technology */
     char operator_name[SIMCOM_CFG_STR_MAX_LEN]; /**< Registered carrier name from +COPS? */
     char system_mode[16];               /**< Serving cell mode from +CPSI? */
