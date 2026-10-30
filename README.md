@@ -23,7 +23,8 @@
 
 ```text
 ├── cmake/              # CMake build scripts and stack usage analysis
-├── docs/               # Architecture documents and AT command specs
+├── docs/               # Architecture documents, examples, and AT command specs
+├── examples/           # Reference applications (Raspberry Pi 5 + Waveshare A7670E HAT)
 ├── inc/                # Public header files
 │   └── internal/       # Private/internal headers
 ├── specs/              # Feature specifications and implementation plans
@@ -32,6 +33,12 @@
 ├── tests/              # Host unit tests, Unity test harness, and mocks
 └── trm/                # Technical Reference Manuals (datasheets & AT guides)
 ```
+
+---
+
+## Reference Example: Raspberry Pi 5 + Waveshare A7670E Cat-1/GNSS HAT
+
+A complete runnable example project is provided in `examples/rpi5_a7670e/` demonstrating BCM GPIO 4 (`PWRKEY`) startup sequencing, non-blocking `/dev/ttyAMA0` UART communication, SIM PIN unlocking, device/network inspection, and continuous URC monitoring. See **[docs/rpi5_a7670e.md](docs/rpi5_a7670e.md)** for hardware jumper setup and usage instructions.
 
 ---
 

@@ -6,6 +6,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
 option(SIMCOM_BUILD_TESTS "Build libsimcom host unit and chaos test suites" ON)
+option(SIMCOM_BUILD_EXAMPLES "Build libsimcom reference examples" ON)
 
 set(SIMCOM_WARNING_FLAGS
     -Wall
@@ -48,6 +49,10 @@ add_custom_target(check_stack_usage
     DEPENDS simcom
     COMMENT "Verifying Constitution Section 3 stack usage budgets (.su)"
 )
+
+if(SIMCOM_BUILD_EXAMPLES)
+    add_subdirectory(examples/rpi5_a7670e)
+endif()
 
 if(SIMCOM_BUILD_TESTS)
     enable_testing()

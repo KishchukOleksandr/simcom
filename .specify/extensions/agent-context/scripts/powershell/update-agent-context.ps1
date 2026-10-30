@@ -139,14 +139,18 @@ if ($null -eq $Options) {
     if ($env:SPECKIT_PYTHON) {
         $pythonCandidates += $env:SPECKIT_PYTHON
     }
-    $pythonCandidates += @('python3', 'python')
+    $pythonCandidates += @('python', 'python3')
     foreach ($candidate in $pythonCandidates) {
         if (Get-Command $candidate -ErrorAction SilentlyContinue) {
             # Verify it is Python 3 with PyYAML available.
-            $null = & $candidate -c "import sys; import yaml; sys.exit(0 if sys.version_info[0] == 3 else 1)" 2>$null
-            if ($LASTEXITCODE -eq 0) {
-                $pythonCmd = $candidate
-                break
+            try {
+                $null = & $candidate -c "import sys; import yaml; sys.exit(0 if sys.version_info[0] == 3 else 1)" 2>$null
+                if ($LASTEXITCODE -eq 0) {
+                    $pythonCmd = $candidate
+                    break
+                }
+            } catch {
+                # Candidate failed to launch (e.g. Windows Store python3 alias stub)
             }
         }
     }

@@ -2,6 +2,9 @@
 
 This guide demonstrates how to integrate **libsimcom** into a microcontroller project (such as STM32, ESP32, NXP LPC/Kinetis, or Nordic nRF) using a cooperative superloop and UART interrupts.
 
+> **Looking for the Raspberry Pi 5 + Waveshare A7670E Cat-1/GNSS HAT example?**
+> See the dedicated **[Raspberry Pi 5 & Waveshare A7670E HAT Guide](rpi5_a7670e.md)** and reference implementation in `examples/rpi5_a7670e/`.
+
 ---
 
 ## 1. Hardware Abstraction Layer (HAL) Binding

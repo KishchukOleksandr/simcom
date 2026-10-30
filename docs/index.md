@@ -32,15 +32,21 @@ This documentation is organized into three major sections:
    - Signal Quality and Network Registration Monitoring
    - Diagnostic Logging Integration
 
-3. **[AT Command Reference](base_cmd.md)**
+3. **[Raspberry Pi 5 & Waveshare A7670E HAT Example](rpi5_a7670e.md)**
+   - Complete runnable Linux reference project (`examples/rpi5_a7670e/`)
+   - Waveshare A7670E HAT jumper settings (`PWR` to `D4`), Raspberry Pi 5 UART0 & RP1 GPIO 4 setup
+   - CLI options, SIM PIN unlock, and live network/signal status report
+
+4. **[AT Command Reference](base_cmd.md)**
    - Quick reference for SIMCom A76XX series AT commands.
 
-4. **[API Reference](files.html)**
+5. **[API Reference](files.html)**
    - Complete documentation of public headers, types, and functions:
      - `simcom.h`: Main public interface and lifecycle functions
      - `simcom_types.h`: Data types, handles, status codes, and callbacks
      - `simcom_cfg.h`: Static buffer sizes and compile-time limits
      - `simcom_profile.h`: Modem command profile descriptors
+     - `rpi5_app.h`: Portable Raspberry Pi 5 + Waveshare A7670E example coordinator API
 
 ---
 

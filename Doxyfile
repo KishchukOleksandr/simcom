@@ -9,8 +9,11 @@ OUTPUT_DIRECTORY       = docs/generated
 INPUT                  = docs/index.md \
                          docs/algorithms.md \
                          docs/examples.md \
+                         docs/rpi5_a7670e.md \
                          docs/base_cmd.md \
                          inc \
+                         examples/rpi5_a7670e/rpi5_app.h \
+                         examples/rpi5_a7670e/rpi5_platform.h \
                          README.md
 
 USE_MDFILE_AS_MAINPAGE = docs/index.md
